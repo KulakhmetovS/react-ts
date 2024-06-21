@@ -5,11 +5,22 @@ import './Pages.css'
 function Pages() {
 
 const [photos, setPhotos] = useState([])
+const [currentPage, setCurrentPage] = useState<number>(0)
+const [fetching, setFetching] = useState<boolean>(true)
+//const [totalCount, setTotalCount] = useState<numbet>(0)
+
 
 useEffect( () => {
-    axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10&_page=3')
-    .then(response => setPhotos(response.data))
-}, [])
+if (fetching) {
+    axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=10&_page=${currentPage}`)
+    .then(response => {
+    setPhotos([...photos, ...response.data])
+    setCurrentPage(prevState => prevState + 1)
+    //setTotalCount(response.headers['x-total-count'])
+    })
+    .finally( () => setFetching(false));
+}
+}, [fetching])
 
 useEffect( () => {
     document.addEventListener('scroll', scrollHandler)
@@ -18,15 +29,18 @@ useEffect( () => {
     };
 }, [])
 
-const scrollHandler = (e) => {
-    console.log('scroll')
+const scrollHandler = (e: Event) => {
+    if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100
+    /*&& photos.length < totalCount*/) {
+        setFetching(true)
+    }
 }
 
   return (
     <div>
       {
           photos.map(photo =>
-              <div className="photo">
+              <div className="photo" key={photo.id}>
                 <div className="title">{photo.id}. {photo.title}</div>
                 <img src={photo.thumbnailUrl} alt="" />
               </div>
