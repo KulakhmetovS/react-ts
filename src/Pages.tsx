@@ -18,6 +18,7 @@ useEffect( () => {
     };
 }, [])
 
+
 const scrollHandler = (e) => {
     console.log('scroll')
 }
