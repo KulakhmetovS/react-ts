@@ -12,10 +12,10 @@ const [fetching, setFetching] = useState<boolean>(true)
 
 useEffect( () => {
 if (fetching) {
-    axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=10&_page=${currentPage}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=all&startIndex=${currentPage}&maxResults=10`)
     .then(response => {
-    setPhotos([...photos, ...response.data])
-    setCurrentPage(prevState => prevState + 1)
+    setPhotos([...photos, ...response.data.items])
+    setCurrentPage(prevState => prevState + 10)
     //setTotalCount(response.headers['x-total-count'])
     })
     .finally( () => setFetching(false));
@@ -41,8 +41,8 @@ const scrollHandler = (e: Event) => {
       {
           photos.map(photo =>
               <div className="photo" key={photo.id}>
-                <div className="title">{photo.id}. {photo.title}</div>
-                <img src={photo.thumbnailUrl} alt="" />
+                <div className="title">{photo.volumeInfo.title}. <br/> {photo.volumeInfo.authors}</div>
+                <img src={photo.volumeInfo.imageLinks.smallThumbnail} alt="" />
               </div>
           )
       }
