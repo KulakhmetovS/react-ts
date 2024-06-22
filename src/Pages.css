@@ -1,0 +1,21 @@
+.book {
+    display: flex;
+    background: #FFEFD5;
+    width: 70%;
+    border-bottom: 1px solid #DEB887;
+    padding: 5px;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    flex-basis: 20%;
+}
+
+.title {
+    padding-left: 10px;
+}

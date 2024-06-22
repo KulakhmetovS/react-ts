@@ -37,12 +37,17 @@ const scrollHandler = (e: Event) => {
 }
 
   return (
-    <div>
+    <div className="line">
       {
           photos.map(photo =>
-              <div className="photo" key={photo.id}>
-                <div className="title">{photo.volumeInfo.title}. <br/> {photo.volumeInfo.authors}</div>
-                <img src={photo.volumeInfo.imageLinks.smallThumbnail} alt="" />
+              <div className="book" key={photo.id}>
+                <div className="image">
+                    <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
+                </div>
+                <div className="title">
+                    <b>Название: </b>"{photo.volumeInfo.title}" 
+                    <br/> 
+                    <b>Автор: </b>{photo.volumeInfo.authors}</div>
               </div>
           )
       }

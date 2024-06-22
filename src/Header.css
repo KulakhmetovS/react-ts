@@ -1,4 +1,7 @@
 .header {
     width: 100%;
-    background: red;
+    background: #A52A2A;
+    display: flex;
+    padding-left: 2%;
+    margin-bottom: 10px;
 }
