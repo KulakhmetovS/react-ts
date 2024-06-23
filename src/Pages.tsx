@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './Pages.css'
 
-function Pages() {
+function Pages({value}) {
 
 const [photos, setPhotos] = useState([])
 const [currentPage, setCurrentPage] = useState<number>(0)
@@ -12,7 +12,7 @@ const [fetching, setFetching] = useState<boolean>(true)
 
 useEffect( () => {
 if (fetching) {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=all&startIndex=${currentPage}&maxResults=10`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&startIndex=${currentPage}&maxResults=10`)
     .then(response => {
     setPhotos([...photos, ...response.data.items])
     setCurrentPage(prevState => prevState + 10)
