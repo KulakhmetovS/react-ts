@@ -7,7 +7,7 @@ function Pages({value}) {
 const [photos, setPhotos] = useState([])
 const [currentPage, setCurrentPage] = useState<number>(1)
 const [fetching, setFetching] = useState<boolean>(true)
-//const [totalCount, setTotalCount] = useState<numbet>(0)
+const [totalCount, setTotalCount] = useState<number>(11)
 
 useEffect( () => {
 if (fetching) {
@@ -15,9 +15,10 @@ if (fetching) {
     .then(response => {
     setPhotos([...photos, ...response.data.items])
     setCurrentPage(prevState => prevState + 10)
-    //setTotalCount(response.headers['x-total-count'])
+    setTotalCount(response.data.totalItems)
     })
     .finally( () => setFetching(false));
+    
 }
 }, [fetching])
 
@@ -30,7 +31,7 @@ useEffect( () => {
 
 const scrollHandler = (e: Event) => {
     if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100
-    /*&& photos.length < totalCount*/) {
+    && photos.length < totalCount) {
         setFetching(true)
     }
 }
