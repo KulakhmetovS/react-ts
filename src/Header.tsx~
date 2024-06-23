@@ -1,11 +1,17 @@
+import {useState} from 'react'
 import './Header.css'
 
-function Header() {
-
+function Header({ onChange }) {
+    
+    const handleChange = (e: Event) => {
+        onChange(e.target.value)
+    }
+    
   return (
     <>
       <div className="header">
-        <><h1>OpenBooks</h1>
+        <div><h1>OpenBooks</h1></div>
+        <div><input onChange={handleChange}/></div>
       </div>
     </>
   )

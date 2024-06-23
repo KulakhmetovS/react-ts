@@ -5,10 +5,9 @@ import './Pages.css'
 function Pages({value}) {
 
 const [photos, setPhotos] = useState([])
-const [currentPage, setCurrentPage] = useState<number>(0)
+const [currentPage, setCurrentPage] = useState<number>(1)
 const [fetching, setFetching] = useState<boolean>(true)
 //const [totalCount, setTotalCount] = useState<numbet>(0)
-
 
 useEffect( () => {
 if (fetching) {
@@ -45,8 +44,8 @@ const scrollHandler = (e: Event) => {
                     <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
                 </div>
                 <div className="title">
-                    <b>Название: </b>"{photo.volumeInfo.title}" 
-                    <br/> 
+                    <b>Название: </b>"{photo.volumeInfo.title}"
+                    <br/>
                     <b>Автор: </b>{photo.volumeInfo.authors}</div>
               </div>
           )

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, KeyboardEvent} from 'react'
 import './Header.css'
 
 function Header({ onChange }) {
@@ -11,7 +11,7 @@ function Header({ onChange }) {
     <>
       <div className="header">
         <div><h1>OpenBooks</h1></div>
-        <div><input onChange={handleChange}/></div>
+        <div className="input"><input type="text" placeholder="Начните вводить сюда название книги для поиска" onChange={handleChange}/></div>
       </div>
     </>
   )
