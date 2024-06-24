@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import ReactDOM from 'react-dom'
 import axios from 'axios'
 import './Pages.css'
+import BookPage from './BookPage.tsx'
+import Header from './Header.tsx'
 
 function Pages({value}) {
 
 const [photos, setPhotos] = useState([])
 const [currentPage, setCurrentPage] = useState<number>(1)
 const [fetching, setFetching] = useState<boolean>(true)
-//const [totalCount, setTotalCount] = useState<numbet>(0)
-
+const [totalCount, setTotalCount] = useState<number>(11)
 
 useEffect( () => {
 if (fetching) {
@@ -16,9 +18,10 @@ if (fetching) {
     .then(response => {
     setPhotos([...photos, ...response.data.items])
     setCurrentPage(prevState => prevState + 10)
-    //setTotalCount(response.headers['x-total-count'])
+    setTotalCount(response.data.totalItems)
     })
     .finally( () => setFetching(false));
+    
 }
 }, [fetching])
 
@@ -31,27 +34,37 @@ useEffect( () => {
 
 const scrollHandler = (e: Event) => {
     if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100
-    /*&& photos.length < totalCount*/) {
+    && photos.length < totalCount) {
         setFetching(true)
     }
 }
 
+const renderContent = () => {
+    ReactDOM.document.getElementById('root')!).render(
+        <React.StrictMode>
+            <BookPage />
+        </React.StrictMode>
+)
+}
+
   return (
+  <>
     <div className="line">
       {
           photos.map(photo =>
-              <div className="book" key={photo.id}>
+              <div className="book" key={photo.id} onClick={renderContent} >
                 <div className="image">
                     <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
                 </div>
                 <div className="title">
-                    <b>Название: </b>"{photo.volumeInfo.title}" 
-                    <br/> 
+                    <b>Название: </b>"{photo.volumeInfo.title}"
+                    <br/>
                     <b>Автор: </b>{photo.volumeInfo.authors}</div>
               </div>
           )
       }
     </div>
+    </>
   )
 }
 

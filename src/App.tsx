@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import Header from './Header.tsx'
 import Pages from "./Pages.tsx"
 import './Header.css'
@@ -14,10 +14,10 @@ function App () {
         setValue(Value)
     }
     
-    
     return (
         <>
             <Header onChange={handleChange}/>
+            <div id="try"></div>
             <Pages key={value} value={value}/>
         </>
     )

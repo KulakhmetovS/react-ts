@@ -7,18 +7,18 @@ import './index.css'
 
 function App () {
     
-    const [value, setValue] = useState<string>("all")
+    const [value, setValue] = useState<string>('all')
     
-    const handleChange = (value) => {
+    const handleChange = (value: string) => {
         let Value: string = value.replace(/ /g, "_")
-        setValue(Мalue)
+        setValue(Value)
     }
-    
     
     return (
         <>
             <Header onChange={handleChange}/>
-            <Pages value={value}/>
+            
+            <Pages key={value} value={value}/>
         </>
     )
 }

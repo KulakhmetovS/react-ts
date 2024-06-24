@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import ReactDOM from 'react-dom'
 import axios from 'axios'
 import './Pages.css'
+import BookPage from './BookPage.tsx'
+import Header from './Header.tsx'
 
 function Pages({value}) {
 
@@ -36,11 +39,31 @@ const scrollHandler = (e: Event) => {
     }
 }
 
+const renderContent = (image: string, name: string, author: string, description: string) => {
+  const root = ReactDOM.createRoot(document.getElementById('try'))
+  root.render(
+      <div>
+        <img src={image} width="200px"/>
+        {name}
+        <br/>
+        {author}
+        <br />
+        {description}
+      </div>
+  )
+}
+
   return (
+  <>
     <div className="line">
       {
           photos.map(photo =>
-              <div className="book" key={photo.id}>
+              <div className="book" key={photo.id} onClick={() => renderContent(
+              photo.volumeInfo.imageLinks.smallThumbnail,
+              photo.volumeInfo.title,
+              photo.volumeInfo.authors,
+              photo.volumeInfo.description
+              )} >
                 <div className="image">
                     <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
                 </div>
@@ -52,6 +75,7 @@ const scrollHandler = (e: Event) => {
           )
       }
     </div>
+    </>
   )
 }
 
