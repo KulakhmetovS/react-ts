@@ -1,6 +1,6 @@
 .book {
     display: flex;
-    background: #FAFAD2;
+    background: #FFEFD5;
     width: 70%;
     border-bottom: 1px solid #DEB887;
     padding: 5px;
@@ -20,11 +20,4 @@
     padding-left: 10px;
 }
 
-.bookPage {
-    display: flex;
-    background: #F5F5DC;
-    width: 70%;
-    padding: 5px;
-    border-radius: 10px;
-    margin: 15px auto 20px auto;
-}
+.bookPage

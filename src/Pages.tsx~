@@ -39,12 +39,18 @@ const scrollHandler = (e: Event) => {
     }
 }
 
-const renderContent = () => {
-    ReactDOM.document.getElementById('root')!).render(
-        <React.StrictMode>
-            <BookPage />
-        </React.StrictMode>
-)
+const renderContent = (image: string, name: string, author: string, description: string) => {
+  const root = ReactDOM.createRoot(document.getElementById('try'))
+  root.render(
+      <div>
+        <img src={image} width="200px"/>
+        {name}
+        <br/>
+        {author}
+        <br />
+        {description}
+      </div>
+  )
 }
 
   return (
@@ -52,7 +58,12 @@ const renderContent = () => {
     <div className="line">
       {
           photos.map(photo =>
-              <div className="book" key={photo.id} onClick={renderContent} >
+              <div className="book" key={photo.id} onClick={() => renderContent(
+              photo.volumeInfo.imageLinks.smallThumbnail,
+              photo.volumeInfo.title,
+              photo.volumeInfo.authors,
+              photo.volumeInfo.description
+              )} >
                 <div className="image">
                     <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
                 </div>

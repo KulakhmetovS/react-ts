@@ -1,9 +1,0 @@
-body {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    background: #FFDEAD;
-    font-family: "Gill Sans", sans-serif;
-}
-
-
