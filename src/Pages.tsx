@@ -38,10 +38,28 @@ const scrollHandler = (e: Event) => {
     }
 }
 
+const storeData = (image: string, name: string, author: string, description: string) => {
+    let bookmark: {
+        bookmarkImage: string;
+        bookmarkName: string;
+        bookmarkAuthor: string;
+        bookmarkDescription: string
+    } = {
+        bookmarkImage: image,
+        bookmarkName: name,
+        bookmarkAuthor: author,
+        bookmarkDescription: description
+    }
+    
+    let jsonData = JSON.stringify(bookmark)
+    
+    axios.post('http://localhost:5173/src/localData.json', jsonData)
+    .then(response => {
+        console.log(response.data)
+    })
+}
 const renderContent = (image: string, name: string, author: string, description: string) => {
-
-    
-    
+        
   const root = ReactDOM.createRoot(document.getElementById('try'))
   root.render(
             <div className="bookPage">
@@ -54,6 +72,8 @@ const renderContent = (image: string, name: string, author: string, description:
                     <b>Автор: </b>{author}
                     <br/>
                     <b>Описание: </b>{description}
+                    <br/>
+                    <button>Добавить в избранное</button>
                 </div>
               </div>
   )
@@ -81,7 +101,15 @@ const renderContent = (image: string, name: string, author: string, description:
                 <div className="title">
                     <b>Название: </b>"{photo.volumeInfo.title}"
                     <br/>
-                    <b>Автор: </b>{photo.volumeInfo.authors}</div>
+                    <b>Автор: </b>{photo.volumeInfo.authors}
+                    <br/>
+                    <button onClick={() => storeData(
+                    photo.volumeInfo.imageLinks.smallThumbnail,
+                    photo.volumeInfo.title,
+                    photo.volumeInfo.authors,
+                    photo.volumeInfo.description
+                    )} >Добавить в избранное</button>
+                </div>
               </div>
           )
       }

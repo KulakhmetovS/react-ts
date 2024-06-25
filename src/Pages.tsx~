@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import './Pages.css'
-import BookPage from './BookPage.tsx'
 import Header from './Header.tsx'
 
 function Pages({value}) {
@@ -40,17 +39,29 @@ const scrollHandler = (e: Event) => {
 }
 
 const renderContent = (image: string, name: string, author: string, description: string) => {
+
+    
+    
   const root = ReactDOM.createRoot(document.getElementById('try'))
   root.render(
-      <div>
-        <img src={image} width="200px"/>
-        {name}
-        <br/>
-        {author}
-        <br />
-        {description}
-      </div>
+            <div className="bookPage">
+                <div className="image">
+                    <img src={image} width="250px"/>
+                </div>
+                <div className="title">
+                    <b>Название: </b>"{name}"
+                    <br/>
+                    <b>Автор: </b>{author}
+                    <br/>
+                    <b>Описание: </b>{description}
+                </div>
+              </div>
   )
+  
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
 
   return (
@@ -65,12 +76,13 @@ const renderContent = (image: string, name: string, author: string, description:
               photo.volumeInfo.description
               )} >
                 <div className="image">
-                    <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="100%"/>
+                    <img src={photo.volumeInfo.imageLinks.smallThumbnail} width="250px"/>
                 </div>
                 <div className="title">
                     <b>Название: </b>"{photo.volumeInfo.title}"
                     <br/>
-                    <b>Автор: </b>{photo.volumeInfo.authors}</div>
+                    <b>Автор: </b>{photo.volumeInfo.authors}
+                </div>
               </div>
           )
       }
