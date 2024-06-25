@@ -51,9 +51,9 @@ const storeData = (image: string, name: string, author: string, description: str
         bookmarkDescription: description
     }
     
-    let jsonData = JSON.stringify(bookmark)
+    //let jsonData = JSON.stringify(bookmark)
     
-    axios.post('http://localhost:5173/src/localData.json', jsonData)
+    axios.post('http://localhost:3000/save-json', bookmark)
     .then(response => {
         console.log(response.data)
     })

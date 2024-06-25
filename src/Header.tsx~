@@ -12,8 +12,7 @@ function Header({ onChange }) {
       <div className="header">
         <div><h1>OpenBooks</h1></div>
         <div className="input"><input type="text" placeholder="Начните вводить сюда название книги для поиска" onChange={handleChange}/></div>
-        <a href="/">Home</a>
-        <a href="/bookmarks">Bookmarks</a>
+        <a hreh=>
       </div>
     </>
   )

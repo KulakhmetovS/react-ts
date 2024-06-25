@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-import ReactDOM from 'react-dom/client'
+import {Route, Routes} from 'react-router-dom'
 import Header from './Header.tsx'
 import Pages from "./Pages.tsx"
+import Bookmarks from './Bookmarks.tsx'
+import './Bookmarks.css'
 import './Header.css'
 import './index.css'
 
@@ -18,15 +20,14 @@ function App () {
         <>
             <Header onChange={handleChange}/>
             <div id="try"></div>
-            <Pages key={value} value={value}/>
+            
+            <Routes>
+                <Route path="/" element={<Pages key={value} value={value}/>} />
+                <Route path="/bookmarks" element={<Bookmarks />} />
+            </Routes>
         </>
     )
 }
 
 export default App
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)

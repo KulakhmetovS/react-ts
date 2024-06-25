@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom/client'
-
+import {BroeserRouter, Route, Routes} from 'react-router-dom'
 import Header from './Header.tsx'
 import Pages from "./Pages.tsx"
 import './Header.css'
@@ -20,6 +20,9 @@ function App () {
             <Header onChange={handleChange}/>
             <div id="try"></div>
             <Pages key={value} value={value}/>
+            <Routes>
+            
+            </Routes>
         </>
     )
 }
@@ -28,6 +31,8 @@ export default App
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )
