@@ -73,7 +73,12 @@ const renderContent = (image: string, name: string, author: string, description:
                     <br/>
                     <b>Описание: </b>{description}
                     <br/>
-                    <button onClick={() => storeData(image, name, author, description)} >Добавить в избранное</button>
+                    <button onClick={() => storeData(
+                    photo.volumeInfo.imageLinks.smallThumbnail,
+                    photo.volumeInfo.title,
+                    photo.volumeInfo.authors,
+                    photo.volumeInfo.description
+                    )} >Добавить в избранное</button>
                 </div>
               </div>
   )
