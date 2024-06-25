@@ -12,7 +12,7 @@ function Bookmarks() {
         setBooks(response.data)
     })
     }, [])
-    
+
     const deleteData = (name: string, description: string) => {
     
     const params = {
@@ -22,7 +22,13 @@ function Bookmarks() {
     
     axios.delete('http://localhost:3000/items', {params})
     .then(response => {
-        console.log(response.data)
+        console.log(response.data);
+        
+        axios.get('http://localhost:3000/get-json')
+        .then(response => {
+        setBooks(response.data)
+        })
+        
     })
 }
     
