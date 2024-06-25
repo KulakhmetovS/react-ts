@@ -1,19 +1,37 @@
-import './Header.css'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import './Bookmarks.css'
 
-function Header({ onChange }) {
+function Bookmarks() {
     
-    const handleChange = (e: Event) => {
-        onChange(e.target.value)
-    }
+    const [books, setBooks] = useState([])
+    
+    useEffect(() => {
+        axios.get('http://localhost:3000/get-json')
+    .then(response => {
+        setBooks(response.data)
+    })
+    }, [])
+    
     
   return (
     <>
-      <div className="header">
-        <div><h1>OpenBooks</h1></div>
-        <div className="input"><input type="text" placeholder="Начните вводить сюда название книги для поиска" onChange={handleChange}/></div>
+      <div className="page">
+              <div className="book">
+                <div className="image">
+                    <img src={books.bookmarkImage} width="250px"/>
+                </div>
+                <div className="title">
+                    <b>Название: </b>"{books.bookmarkName}"
+                    <br/>
+                    <b>Автор: </b>{books.bookmarkAuthor}
+                    <br/>
+                    <b>Описание: </b>{books.bookmarkDescription}
+                </div>
+              </div>
       </div>
     </>
   )
 }
 
-export default Header
+export default Bookmarks
