@@ -1,8 +1,8 @@
 .book {
     display: flex;
-    background: #FAFAD2;
+    background: #fafad2;
     width: 70%;
-    border-bottom: 1px solid #DEB887;
+    border-bottom: 1px solid #deb887;
     padding: 5px;
 }
 
@@ -22,7 +22,7 @@
 
 .bookPage {
     display: flex;
-    background: #F5F5DC;
+    background: #f5f5dc;
     width: 70%;
     padding: 5px;
     border-radius: 10px;
