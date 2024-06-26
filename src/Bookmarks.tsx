@@ -36,23 +36,23 @@ function Bookmarks() {
     <>
       <div className="page">
       {books.map(book =>
-              <div className="book" key={book.bookmarkName}>
-                <div className="image">
-                    <img src={book.bookmarkImage} width="250px"/>
-                </div>
-                <div className="title">
-                    <b>Название: </b>"{book.bookmarkName}"
-                    <br/>
-                    <b>Автор: </b>{book.bookmarkAuthor}
-                    <br/>
-                    <b>Описание: </b>{book.bookmarkDescription}
-                    <br/>
-                    <button onClick={() => deleteData(
-                        book.bookmarkName,
-                        book.bookmarkDescription
-                    )}>Удалить из избранного</button>
-                </div>
-              </div>
+                  <div className="book" key={book.bookmarkName}>
+                    <div className="image">
+                        <img src={book.bookmarkImage} width="250px"/>
+                    </div>
+                    <div className="title">
+                        <b>Название: </b>"{book.bookmarkName}"
+                        <br/>
+                        <b>Автор: </b>{book.bookmarkAuthor}
+                        <br/>
+                        <b>Описание: </b>{book.bookmarkDescription}
+                        <br/>
+                        <button onClick={() => deleteData(
+                            book.bookmarkName,
+                            book.bookmarkDescription
+                        )}>Удалить из избранного</button>
+                    </div>
+                  </div>
               )
         }
       </div>
