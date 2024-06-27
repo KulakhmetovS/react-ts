@@ -28,3 +28,10 @@
     border-radius: 10px;
     margin: 15px auto 20px auto;
 }
+
+@media (max-width: 1366px) {
+    .book {
+    width: 85%;
+}
+
+}

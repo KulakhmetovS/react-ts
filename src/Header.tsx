@@ -1,8 +1,9 @@
-import { useState, KeyboardEvent } from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 function Header({ onChange }) {
-    //handleChange отвечает за получение поискового запроса из поля ввода 
+    //handleChange отвечает за получение поискового запроса из поля ввода
     //и передачу его через пропс onChange в компонент Pages
     const handleChange = (e: Event) => {
         onChange(e.target.value);
@@ -11,7 +12,7 @@ function Header({ onChange }) {
     return (
         <>
             <div className="header">
-                <div>
+                <div className="label">
                     <h1>OpenBooks</h1>
                 </div>
                 <div className="input">
@@ -21,8 +22,10 @@ function Header({ onChange }) {
                         onChange={handleChange}
                     />
                 </div>
-                <a href="/">Home</a>
-                <a href="/bookmarks">Bookmarks</a>
+                <div className="navigation">
+                    <NavLink to="/" activeClassName="active">Главная</NavLink>
+                    <NavLink to="/bookmarks" activeClassName="active">Избранное</NavLink>
+                </div>
             </div>
         </>
     );

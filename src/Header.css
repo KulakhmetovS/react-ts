@@ -2,15 +2,14 @@
     width: 100%;
     background: #a52a2a;
     display: flex;
-    padding-left: 2%;
     margin-bottom: 10px;
     align-items: center;
 }
 
 .input {
-    margin-left: 10px;
     width: 30%;
     height: 100%;
+    margin-right: 2%;
 }
 
 input {
@@ -19,6 +18,59 @@ input {
     height: 100%;
 }
 
-.header div {
+.label{
     margin-right: 2%;
+    margin-left: 2%;
+}
+
+a {
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 130%;
+}
+
+a:hover {
+    color: #FFE4C4;
+}
+
+.active {
+    color: #F4A460;
+}
+
+@media (max-width: 1366px) {
+    .input {
+    width: 45%;
+}
+}
+
+@media (orientation: portrait) {
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .input {
+        margin-bottom: 3%;
+        width: 90%;
+        height: 50px;
+    }
+
+    .navigation {
+        margin-bottom: 3%;
+    }
+
+    a {
+        font-size: 250%;
+    }
+
+    h1 {
+        font-size: 300%;
+    }
+    
+    input::placeholder {
+        font-size: 200%;
+    }
 }

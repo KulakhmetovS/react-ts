@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import './Pages.css';
+import './Pages_and_Bookmarks.css';
 import Header from './Header.tsx';
 
 function Pages({ value }) {
     const [books, setBooks] = useState([]); //Состояние массива книг
-    const [currentPage, setCurrentPage] = useState<number>(1);  //Состояние количества страниц
-    const [fetching, setFetching] = useState<boolean>(true);    //Состояние прокрутки
-    const [totalCount, setTotalCount] = useState<number>(11);   //Состояние получения книг
+    const [currentPage, setCurrentPage] = useState<number>(1); //Состояние количества страниц
+    const [fetching, setFetching] = useState<boolean>(true); //Состояние прокрутки
+    const [totalCount, setTotalCount] = useState<number>(11); //Состояние получения книг
 
     useEffect(() => {
-        if (fetching) { //Если достигнут низ страницы
+        if (fetching) {
+            //Если достигнут низ страницы
             //axios get запрос на получение списка книг с заданными параметрами
             axios
                 .get(
                     `https://www.googleapis.com/books/v1/volumes?q=${value}&startIndex=${currentPage}&maxResults=10`,
                 )
                 .then((response) => {
-                    setBooks([...books, ...response.data.items]);   //Новые книги подгружаются в массив к старым
-                    setCurrentPage((prevState) => prevState + 10);  //Киличество позиций книг +10
-                    setTotalCount(response.data.totalItems);    //Получение общего числа книг
+                    setBooks([...books, ...response.data.items]); //Новые книги подгружаются в массив к старым
+                    setCurrentPage((prevState) => prevState + 10); //Киличество позиций книг +10
+                    setTotalCount(response.data.totalItems); //Получение общего числа книг
                 })
                 .finally(() => setFetching(false));
         }
@@ -34,13 +35,14 @@ function Pages({ value }) {
     }, []);
 
     const scrollHandler = (e: Event) => {
-        if (    //Если достигнут низ страницы и число полученных книг не превысило число имеющихся на сервере
+        if (
+            //Если достигнут низ страницы и число полученных книг не превысило число имеющихся на сервере
             e.target.documentElement.scrollHeight -
                 (e.target.documentElement.scrollTop + window.innerHeight) <
                 100 &&
             books.length < totalCount
         ) {
-            setFetching(true);  //Можно отправлять запрос на получение новых книг
+            setFetching(true); //Можно отправлять запрос на получение новых книг
         }
     };
 
@@ -63,7 +65,7 @@ function Pages({ value }) {
             bookmarkAuthor: author,
             bookmarkDescription: description,
         };
-        
+
         //axios post запрос на сервер для сохранения данных
         axios
             .post('http://localhost:3000/save-json', bookmark)
@@ -71,7 +73,7 @@ function Pages({ value }) {
                 console.log(response.data);
             });
     };
-    
+
     //renderContent отвечает за отрисовку карточки книги
     const renderContent = (
         image: string,
@@ -116,7 +118,8 @@ function Pages({ value }) {
     return (
         <>
             <div className="line">
-            {/*Проходимся по массиву книг*/}
+            <div id="bookCard"></div>
+                {/*Проходимся по массиву книг*/}
                 {books.map((book) => (
                     <div
                         className="book"
@@ -131,7 +134,7 @@ function Pages({ value }) {
                         }
                     >
                         <div className="image">
-                        {/*В этом месте был критический баг (На момент коммита исправлен).
+                            {/*В этом месте был критический баг (На момент коммита исправлен).
                         В некоторых случая при поиске страница просто переставала полностью отображаться.
                         Баг воспроизводился при загрузке книги, у которой отстуствует обложка*/}
                             <img
