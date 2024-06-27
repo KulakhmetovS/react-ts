@@ -86,7 +86,7 @@ function Pages({ value }) {
         root.render(
             <div className="bookPage">
                 <div className="image">
-                    <img src={image} width="320px" />
+                    <img src={image} width="px" />
                 </div>
                 <div className="title">
                     <b>Название: </b>"{name}"
@@ -141,7 +141,7 @@ function Pages({ value }) {
                                 src={String(
                                     book.volumeInfo.imageLinks?.smallThumbnail,
                                 )}
-                                width="320px"
+                                width="250px"
                             />
                         </div>
                         <div className="title">

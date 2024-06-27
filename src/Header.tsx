@@ -23,8 +23,12 @@ function Header({ onChange }) {
                     />
                 </div>
                 <div className="navigation">
-                    <NavLink to="/" activeClassName="active">Главная</NavLink>
-                    <NavLink to="/bookmarks" activeClassName="active">Избранное</NavLink>
+                    <NavLink to="/" activeClassName="active">
+                        Главная
+                    </NavLink>
+                    <NavLink to="/bookmarks" activeClassName="active">
+                        Избранное
+                    </NavLink>
                 </div>
             </div>
         </>

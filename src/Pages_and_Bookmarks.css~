@@ -29,28 +29,10 @@
     margin: 15px auto 20px auto;
 }
 
-@media (orientation: portrait) {
-    .book {
-        width: 95%;
-        font-size: 210%;
-    }
-    
-    button {
-        font-size: 100%;
-    }
-    
-    .bookPage {
-    width: 95%;
-    font-size: 210%;
-    }
-}
-
 @media (max-width: 1366px) {
     .book {
         width: 85%;
     }
-    
-    .bookPage {
-    width: 85%;
-    }
 }
+
+

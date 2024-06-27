@@ -39,8 +39,8 @@ a:hover {
 }
 
 input::placeholder {
-    font-size: 110%;
-}
+        font-size: 200%;
+    }
 
 @media (max-width: 1366px) {
     .input {

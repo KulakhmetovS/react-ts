@@ -21,7 +21,11 @@ function App() {
 
             <Routes>
                 {/* При динамическом изменении ключа элемента элемент перерисовывается с новыми данными */}
-                <Route exact path="/" element={<Pages key={value} value={value} />} />
+                <Route
+                    exact
+                    path="/"
+                    element={<Pages key={value} value={value} />}
+                />
                 <Route exact path="/bookmarks" element={<Bookmarks />} />
             </Routes>
         </>
