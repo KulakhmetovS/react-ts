@@ -125,7 +125,7 @@ function Pages({ value }) {
                     >
                         <div className="image">
                             <img
-                                src={String(photo.volumeInfo.imageLinks?.smallThumbnail)}
+                                src={photo.volumeInfo.imageLinks.smallThumbnail}
                                 width="250px"
                             />
                         </div>
