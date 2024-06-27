@@ -34,14 +34,14 @@
         width: 95%;
         font-size: 210%;
     }
-    
+
     button {
         font-size: 100%;
     }
-    
+
     .bookPage {
-    width: 95%;
-    font-size: 210%;
+        width: 95%;
+        font-size: 210%;
     }
 }
 
@@ -49,8 +49,8 @@
     .book {
         width: 85%;
     }
-    
+
     .bookPage {
-    width: 85%;
+        width: 85%;
     }
 }
