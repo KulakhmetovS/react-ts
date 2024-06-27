@@ -2,6 +2,8 @@ import { useState, KeyboardEvent } from 'react';
 import './Header.css';
 
 function Header({ onChange }) {
+    //handleChange отвечает за получение поискового запроса из поля ввода 
+    //и передачу его через пропс onChange в компонент Pages
     const handleChange = (e: Event) => {
         onChange(e.target.value);
     };
