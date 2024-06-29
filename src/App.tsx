@@ -18,7 +18,7 @@ function App() {
     return (
         <>
             <Header onChange={handleChange} />
-            
+
             <Routes>
                 {/* При динамическом изменении ключа элемента элемент перерисовывается с новыми данными */}
                 <Route
