@@ -1,0 +1,20 @@
+import { render, screen } from '@testing-library/react';
+import { MyContextProvider } from './context';
+import Pages from './Pages';
+import Header from './Header';
+
+test('Поиск книг выполнен удачно', async () => {
+  render(<Pages value="Test" />);
+  const testElements = await screen.findAllByText(/Test/i);
+  expect(testElements[0]).toBeInTheDocument();
+});
+
+test('Шапка сайта отрисовывается', async () => {
+  render(
+    <MyContextProvider>
+      <Header />
+    </MyContextProvider>
+  );
+  const testElement = await screen.findByText(/OpenBooks/i);
+  expect(testElement).toBeInTheDocument();
+});
